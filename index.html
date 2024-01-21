@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknik ABs Login</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #4285f4;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4285f4;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3367d6;
+        }
+
+        /* Cyber Style for Greeting Window */
+        #greeting-container {
+            background-color: #fff;
+            color: #333;
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid #4285f4;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-link {
+            color: #4285f4; /* Blue color for the download links */
+            text-decoration: none;
+            margin: 10px;
+            display: block;
+        }
+    </style>
+    <script>
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        // Disable keyboard shortcuts (Ctrl+Shift+I, Ctrl+Shift+J, and F12)
+        document.addEventListener('keydown', function (e) {
+            if ((e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) || e.key === 'F12') {
+                e.preventDefault();
+            }
+        });
+
+        function encryptPassword(username, password) {
+            // Check if the username is a guest, then encrypt with a common password "guest"
+            if (username.startsWith("Guest")) {
+                return btoa("guest");
+            } else {
+                // Default encryption for other users
+                return btoa(password);
+            }
+        }
+
+        function validateLogin() {
+            var usernameInput = document.getElementById("username");
+            var passwordInput = document.getElementById("password");
+
+            var username = usernameInput.value.trim();
+            var password = passwordInput.value.trim();
+
+            var encryptedPassword = encryptPassword(username, password);
+
+            if ((username === "Teknik AB" && encryptedPassword === "dGVrbmlrYWIuZGV2") ||
+                (username === "Guest1" && encryptedPassword === "Z3Vlc3Q=") ||
+                (username === "Guest2" && encryptedPassword === "Z3Vlc3Q=")) { 
+                
+              
+                var greetingWindow = window.open("", "_blank");
+                greetingWindow.document.write(` 
+                    <html>
+                        <head>
+                            <title>Cyber Greeting</title>
+                            <style>
+                                body {
+                                    background-color: #f4f4f4;
+                                    color: #333;
+                                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                                    text-align: center;
+                                    margin: 20px;
+                                }
+                                h1 {
+                                    color: #4285f4;
+                                }
+                                #greeting-container {
+                                    background-color: #fff;
+                                    color: #333;
+                                    padding: 20px;
+                                    margin: 20px;
+                                    border: 2px solid #4285f4;
+                                    border-radius: 10px;
+                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                }
+                                a {
+                                    text-decoration: none;
+                                }
+                                .download-link {
+                                    color: #4285f4; /* Blue color for the download links */
+                                    margin: 10px;
+                                    display: block;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <div id="greeting-container">
+                                <h1>Hello, ${username}!</h1>
+                            </div>
+                        </body>
+                    </html>
+                `);
+            } else {
+                alert("Invalid username or password. Please try again.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Teknik ABs Login Platforms</h1>
+    <form onsubmit="validateLogin(); return false;">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
