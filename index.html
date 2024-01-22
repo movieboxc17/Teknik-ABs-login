@@ -19,9 +19,15 @@
             color: #4285f4;
         }
 
+        .obs-warning {
+            color: #ff0000;
+            font-weight: bold;
+            margin: 20px;
+        }
+
         form {
             max-width: 400px;
-            margin: 50px auto;
+            margin: 20px auto 50px;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -68,12 +74,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        a {
-            text-decoration: none;
-        }
-
         .download-link {
             color: #4285f4; /* Blue color for the download links */
+            text-decoration: none;
             margin: 10px;
             display: block;
         }
@@ -148,14 +151,6 @@
                         <body>
                             <div id="greeting-container">
                                 <h1>Hello, ${username}!</h1>
-                                <p>Welcome to your personal site, where you can access our new and upcoming sites.</p>
-                            </div>
-                            
-                            <div>
-                                <button><a href="#">Teknik AB Games</a></button>
-                                <button><a href="#">Teknik AB wiki</a></button>
-                                <button><a href="#"></a></button>
-                                <button><a href="#"></a></button>
                             </div>
                         </body>
                     </html>
@@ -167,6 +162,10 @@
     </script>
 </head>
 <body>
+    <div class="obs-warning">
+        <h4>OBS! To access, login contact info.teknikab@gmail.com for a username & password.</h4>
+    </div>
+
     <h1>Teknik ABs Login Platforms</h1>
     <form onsubmit="validateLogin(); return false;">
         <label for="username">Username:</label>
