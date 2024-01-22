@@ -107,10 +107,11 @@
             var username = usernameInput.value.trim();
             var password = passwordInput.value.trim();
 
+            // Encrypt the entered password
             var encryptedPassword = encryptPassword(username, password);
 
             if ((username === "Teknik AB" && encryptedPassword === "dGVrbmlrYWIuZGV2") ||
-                (username === "Azkansz" && encryptedPassword === "") ||
+                (username === "Azkansz" && encryptedPassword === "SEVqc0FuLCBUZUtuSWsgYUIsLg==") ||
                 (username === "Guest2" && encryptedPassword === "Z3Vlc3Q=")) { 
                 
                 var greetingWindow = window.open("", "_blank");
