@@ -95,6 +95,9 @@
         function encryptPassword(username, password) {
             if (username.startsWith("Guest")) {
                 return btoa("guest");
+            } else if (username === "Azkansz") {
+                // Encrypt the password "Grgamel"
+                return btoa("Grgamel");
             } else {
                 return btoa(password);
             }
@@ -107,11 +110,10 @@
             var username = usernameInput.value.trim();
             var password = passwordInput.value.trim();
 
-            // Encrypt the entered password
             var encryptedPassword = encryptPassword(username, password);
 
             if ((username === "Teknik AB" && encryptedPassword === "dGVrbmlrYWIuZGV2") ||
-                (username === "Askansz" && encryptedPassword === "SEVqc0FuLCBUZUtuSWsgYUIsLg==") ||
+                (username === "Azkansz" && encryptedPassword === "R3JnYW1lbA==") ||
                 (username === "Guest2" && encryptedPassword === "Z3Vlc3Q=")) { 
                 
                 var greetingWindow = window.open("", "_blank");
