@@ -68,9 +68,12 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
+        a {
+            text-decoration: none;
+        }
+
         .download-link {
             color: #4285f4; /* Blue color for the download links */
-            text-decoration: none;
             margin: 10px;
             display: block;
         }
@@ -80,7 +83,6 @@
             e.preventDefault();
         });
 
-        // Disable keyboard shortcuts (Ctrl+Shift+I, Ctrl+Shift+J, and F12)
         document.addEventListener('keydown', function (e) {
             if ((e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) || e.key === 'F12') {
                 e.preventDefault();
@@ -88,11 +90,9 @@
         });
 
         function encryptPassword(username, password) {
-            // Check if the username is a guest, then encrypt with a common password "guest"
             if (username.startsWith("Guest")) {
                 return btoa("guest");
             } else {
-                // Default encryption for other users
                 return btoa(password);
             }
         }
@@ -110,7 +110,6 @@
                 (username === "Guest1" && encryptedPassword === "Z3Vlc3Q=") ||
                 (username === "Guest2" && encryptedPassword === "Z3Vlc3Q=")) { 
                 
-              
                 var greetingWindow = window.open("", "_blank");
                 greetingWindow.document.write(` 
                     <html>
@@ -149,6 +148,14 @@
                         <body>
                             <div id="greeting-container">
                                 <h1>Hello, ${username}!</h1>
+                                <p>Welcome to your personal site, where you can access our new and upcoming sites.</p>
+                            </div>
+                            
+                            <div>
+                                <button><a href="#">Teknik AB Games</a></button>
+                                <button><a href="#">Teknik AB wiki</a></button>
+                                <button><a href="#"></a></button>
+                                <button><a href="#"></a></button>
                             </div>
                         </body>
                     </html>
