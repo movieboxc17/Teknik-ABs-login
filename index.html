@@ -7,100 +7,53 @@
     <title>Teknik ABs Login</title>
     <style>
         body {
-            background-color: #f4f4f4;
-            color: #333;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
             text-align: center;
-            margin: 0;
-            padding: 0;
+            margin: 150px;
         }
 
         h1 {
-            color: #4285f4;
-        }
-
-        .obs-warning {
-            color: #ff0000;
-            font-weight: bold;
-            margin: 20px;
-        }
-
-        form {
-            max-width: 400px;
-            margin: 20px auto 50px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
+            color: #00ff00;
         }
 
         input {
-            width: calc(100% - 20px);
             padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
+            margin: 10px;
+            border: 1px solid #00ff00;
+            background-color: #222;
+            color: #fff;
         }
 
         button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4285f4;
-            color: #fff;
+            padding: 10px 20px;
+            background-color: #00ff00;
+            color: #111;
             border: none;
-            border-radius: 4px;
             cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #3367d6;
         }
 
         /* Cyber Style for Greeting Window */
         #greeting-container {
-            background-color: #fff;
-            color: #333;
+            background-color: #111;
+            color: #00ff00;
             padding: 20px;
             margin: 20px;
-            border: 2px solid #4285f4;
+            border: 2px solid #00ff00;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .download-link {
-            color: #4285f4; /* Blue color for the download links */
+            color: #0000ff; /* Blue color for the download links */
             text-decoration: none;
             margin: 10px;
             display: block;
         }
     </style>
     <script>
-        document.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-        });
-
-        document.addEventListener('keydown', function (e) {
-            if ((e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) || e.key === 'F12') {
-                e.preventDefault();
-            }
-        });
-
-        function encryptPassword(username, password) {
-            if (username.startsWith("Guest")) {
-                return btoa("guest");
-            } else if (username === "Azkansz") {
-                // Encrypt the password "Grgamel"
-                return btoa("Grgamel");
-            } else {
-                return btoa(password);
-            }
+        function encryptPassword(password) {
+            return btoa(password); // Base64 encoding for simplicity (you may want to use a more secure encryption method)
         }
 
         function validateLogin() {
@@ -110,42 +63,42 @@
             var username = usernameInput.value.trim();
             var password = passwordInput.value.trim();
 
-            var encryptedPassword = encryptPassword(username, password);
+            // Encrypt the entered password
+            var encryptedPassword = encryptPassword(password);
 
-            if ((username === "Teknik AB" && encryptedPassword === "dGVrbmlrYWIuZGV2") ||
-                (username === "Askansz" && encryptedPassword === "R3JnYW1lbA==") ||
-                (username === "Guest2" && encryptedPassword === "Z3Vlc3Q=")) { 
-                
+            // Check for valid username and password combinations
+            if ((username === "Teknik AB" && encryptedPassword === "dGVrbmlrYWIuZGV2") || // Base64-encoded "teknikab.dev"
+                (username === "Askansz" && encryptedPassword === "Z2FyZ2FtZWw=")) { // Base64-encoded "gargamel"
+                // Redirect to a new window with a cyber-style greeting and multiple download links
                 var greetingWindow = window.open("", "_blank");
-                greetingWindow.document.write(` 
+                greetingWindow.document.write(`
                     <html>
                         <head>
                             <title>Cyber Greeting</title>
                             <style>
                                 body {
-                                    background-color: #f4f4f4;
-                                    color: #333;
-                                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                                    background-color: #111;
+                                    color: #00ff00;
+                                    font-family: Arial, sans-serif;
                                     text-align: center;
                                     margin: 20px;
                                 }
                                 h1 {
-                                    color: #4285f4;
+                                    color: #00ff00;
                                 }
                                 #greeting-container {
-                                    background-color: #fff;
-                                    color: #333;
+                                    background-color: #111;
+                                    color: #00ff00;
                                     padding: 20px;
                                     margin: 20px;
-                                    border: 2px solid #4285f4;
+                                    border: 2px solid #00ff00;
                                     border-radius: 10px;
-                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                                 }
                                 a {
                                     text-decoration: none;
                                 }
                                 .download-link {
-                                    color: #4285f4; /* Blue color for the download links */
+                                    color: #0000ff; /* Blue color for the download links */
                                     margin: 10px;
                                     display: block;
                                 }
@@ -154,6 +107,11 @@
                         <body>
                             <div id="greeting-container">
                                 <h1>Hello, ${username}!</h1>
+                                <p>Welcome to the Cyber World.</p>
+                                <p>Download:</p>
+                                <a class="download-link" href="teknikabgamesnewcode.html" download>Teknik AB Games new code</a>
+                                <a class="download-link" href="File2.html" download>File 2</a>
+                                <a class="download-link" href="File3.html" download>File 3</a>
                             </div>
                         </body>
                     </html>
@@ -165,16 +123,16 @@
     </script>
 </head>
 <body>
-    <div class="obs-warning">
-        <h4>OBS! To access login, contact info.teknikab@gmail.com for a username & password.</h4>
-    </div>
-
     <h1>Teknik ABs Login Platforms</h1>
     <form onsubmit="validateLogin(); return false;">
         <label for="username">Username:</label>
+        <br>
         <input type="text" id="username" name="username" required>
+        <br>
         <label for="password">Password:</label>
+        <br>
         <input type="password" id="password" name="password" required>
+        <br>
         <button type="submit">Login</button>
     </form>
 </body>
